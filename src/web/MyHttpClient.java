@@ -1,5 +1,7 @@
 package web;
 
+import schemas.Currency;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -13,16 +15,16 @@ public class MyHttpClient {
     public MyHttpClient() {
     }
 
-    public String sendRequest() throws IOException, InterruptedException {
-        HttpRequest request = createRequest();
+    public String sendRequest(Currency originCurrency, Currency desiredCurrency, double amount) throws IOException, InterruptedException {
+        HttpRequest request = createRequest(originCurrency, desiredCurrency, amount);
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         return response.body();
     }
 
-    private HttpRequest createRequest() {
+    private HttpRequest createRequest(Currency origin, Currency desired, double amount) {
         return HttpRequest.newBuilder()
-                .uri(URI.create(String.format("%s/EUR/GBP", BASE_URL)))
+                .uri(URI.create(String.format("%s/%s/%s/%f", BASE_URL,origin, desired, amount)))
                 .build();
     }
 }
