@@ -6,3 +6,9 @@ O Conversor de Moedas da Alura é um challenge proposto no curso Oracle Next Edu
 
 - Java 17
 - Biblioteca Gson
+
+## Como utilizar
+
+Estruturei o projeto para que fosse necessário apenas clonar e rodar, então, para executá-lo localmente é necessário apenas dar um git clone no repo, ou baixar os arquivos como .zip e executar o método main da classe Main.
+
+⚠️ Aviso: para o funcionamento adequado, é necessário que seja criada uma variável de ambiente chamada "APIKEY" com a sua chave de acesso à ExchangeRate-API. ⚠️
